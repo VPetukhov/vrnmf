@@ -1,16 +1,14 @@
 [![<kharchenkolab>](https://circleci.com/gh/kharchenkolab/vrnmf.svg?style=svg)](https://app.circleci.com/pipelines/github/kharchenkolab/vrnmf)
 [![CRAN status](https://www.r-pkg.org/badges/version/vrnmf)](https://cran.r-project.org/package=vrnmf)
 [![CRAN downloads](https://cranlogs.r-pkg.org/badges/vrnmf)](https://cran.r-project.org/package=vrnmf)
+  
+# vrnmf: Volume-regularized NMF
 
+The R package `vrnmf` implements a set of methods to perform non-negative matrix decomposition with minimum volume constraints. A general problem is to decompose a non-negative matrix <img src="https://render.githubusercontent.com/render/math?math=X_{nm}"> in a product of non-negative matrix <img src="https://render.githubusercontent.com/render/math?math=C_{nr}"> and matrix <img src="https://render.githubusercontent.com/render/math?math=D_{rm}"> of lower rank r: <img src="https://render.githubusercontent.com/render/math?math=X = C\cdot D">. In case of additional non-negativity constraints on the matrix <img src="https://render.githubusercontent.com/render/math?math=D">, the problem is known as NMF. 
 
-# vrnmf
-Volume-regularized NMF.
+This problem, and NMF as a particular case, is not identifiable in the general case, meaning that there are potentially many different solutions that deliver the same decomposition quality [[1]](#1). This both makes interpretation of factorized matrices challenging and limits applications of NMF to instrumental dimensionality reduction. However, recent theoretical advances have shown that the issue can be overcome under a relatively mild assumption based on "spread". That is, the column vectors of C are known as "sufficiently spread"[[2-3]](#2) if the matrix C is non-negative and the matrix C has sufficiently spread column vectors then the volume minimization of a matrix D delivers a correct and unique, up to a scale and permutation, solution (C, D). 
 
-vrnmf implements a set of methods to perform non-negative matrix decomposition with minimum volume contraints. A general problem is to decompose a non-negative matrix <img src="https://render.githubusercontent.com/render/math?math=X_{nm}"> in a product of non-negative matrix <img src="https://render.githubusercontent.com/render/math?math=C_{nr}"> and matrix <img src="https://render.githubusercontent.com/render/math?math=D_{rm}"> of lower rank r: <img src="https://render.githubusercontent.com/render/math?math=X = C\cdot D">. In case of additional non-negativity constraints on the matrix <img src="https://render.githubusercontent.com/render/math?math=D">, the problem is known as NMF. 
-
-This problem, and NMF as a particualr case, is not identifiable in the general case, meaning that there are potentially many different solutions that deliver the same decomposition quality [[1]](#1). This both makes interpretation of factorized matrices challenging and limits applications of NMF to instrumental dimensionality reduction. However, recent theoretical advances have shown that the issue can be overcome under a relatively mild assumption based on "spread". That is, the column vectors of C are known as "sufficiently spread"[[2-3]](#2) if the matrix C is non-negative and the matrix C has sufficiently spread column vectors then the volume minimization of a matrix D delivers a correct and unique, up to a scale and permutation, solution (C, D). 
-
-The _AnchorFree_ approach enables efficient estimation of matrix C by reformulating the problem in covariance domain following by application of volume minimization criterion [[4]](#4). A short walkthrough can be found [here](https://github.com/kharchenkolab/vrnmf/blob/master/doc/volume_regularized_NMF.md)
+The _AnchorFree_ approach enables efficient estimation of matrix C by reformulating the problem in the covariance domain using the application of the volume minimization criterion [[4]](#4). A short walkthrough can be found [here](https://github.com/kharchenkolab/vrnmf/blob/master/doc/volume_regularized_NMF.md)
 
 A more general formulation of the problem that accounts for noise in matrix X, such that only approximately <img src="https://render.githubusercontent.com/render/math?math=X \approx CD">, is called volume-regularized NMF (_vrnmf_). To balance goodness of matrix approximation and matrix D volume, _vrnmf_ minimizes the following objective function [[5-6]](#2):
 
@@ -72,6 +70,15 @@ Population sequencing data reveal a compendium of mutational processes in the hu
 Science, 12 Aug 2021. doi: 10.1126/science.aba7408
 ```
 
+#### Publication
+
+If you find this software useful for your research, please cite the corresponding [paper](https://science.sciencemag.org/content/early/2021/08/11/science.aba7408):
+
+```
+Vladimir B. Seplyarskiy Ruslan A. Soldatov, et al. 
+Population sequencing data reveal a compendium of mutational processes in the human germ line.
+Science, 12 Aug 2021. doi: 10.1126/science.aba7408
+```
 #### README references
 
 <a id="1">[1]</a> 
